@@ -1,0 +1,87 @@
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+.magical-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.magical-card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1.6;
+  padding: 3px;
+  border-radius: 1rem;
+  background: #191c29;
+  isolation: isolate;
+  text-align: center;
+  cursor: pointer;
+}
+
+.magical-card::before,
+.magical-card::after {
+  content: "";
+  position: absolute;
+  inset: -0.25rem;
+  z-index: -1;
+  background: conic-gradient(
+    from var(--rotate),
+    #5ddcff,
+    #3c67e3 43%,
+    #4e00c2,
+    #5ddcff
+  );
+  border-radius: inherit;
+  animation: rotation 5s linear infinite;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.magical-card::after {
+  filter: blur(3.5rem);
+}
+
+.magical-card:hover::before,
+.magical-card:hover::after {
+  opacity: 1;
+}
+
+.magical-card > * {
+  background: #191c29;
+  border-radius: inherit;
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.mythrill-link {
+  color: #fff;
+  font-size: 0.875rem;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.mythrill-link:hover {
+  opacity: 1;
+}
+
+@keyframes rotation {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}

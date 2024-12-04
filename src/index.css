@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --card-height: 200px;
+  }
+
+  html {
+    @apply antialiased;
+  }
+  
+  body {
+    @apply bg-gray-900 text-white;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  
+  ::selection {
+    @apply bg-primary-500/30 text-white;
+  }
+}
+
+@layer components {
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-gray-900;
+  }
+  
+  .input-base {
+    @apply block w-full rounded-lg border border-gray-700 bg-gray-800 px-4 py-2.5
+           text-gray-300 placeholder-gray-400 transition-colors
+           hover:border-gray-600 focus:border-primary-500
+           focus:outline-none focus:ring-2 focus:ring-primary-500/20;
+  }
+}
